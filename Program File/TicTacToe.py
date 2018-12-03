@@ -39,6 +39,7 @@ def check_won():
         WON = False
 
 
+# Alternates the players back and forth for their moves
 def player_check():
     if current_player % 2 == 0:
         move = int(input("Choose your position"))
@@ -48,6 +49,7 @@ def player_check():
         make_move(move)
 
 
+# Allows the player to make the move, checks to make sure placing right peice
 def make_move(y):
     if check_spot(y) is False:
         print("You can't make that move")
@@ -58,16 +60,19 @@ def make_move(y):
             board[y] = 0
 
 
+# Checks available position, if the selected position is available
 def available_move():
     for spot in board:
         if board[spot] == 0 or 1:
             takenspots += 1
 
 
+# Prints the new board
 def draw_board():
     print(board)
 
 
+# Puts all previous functions together to play the game
 def play_game():
     print("Beginning a game of TicTacToe")
     if WON is False:
