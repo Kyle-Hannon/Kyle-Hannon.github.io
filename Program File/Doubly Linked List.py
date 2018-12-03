@@ -13,10 +13,10 @@ class DoubleList:
     def __init__(self):
         self.head = None
 
-    def isEmpty(self):
+    def isEmpty(self):  # Checks to see if list is empty
         return self.head is None
 
-    def append(self, data):
+    def append(self, data):  # Adds a new node to the end
         if self.head is None:
             new_node = Node(data)
             new_node.previous = None
@@ -30,7 +30,7 @@ class DoubleList:
             new_node.prev = curr
             new_node.next = None
 
-    def prepend(self, data):
+    def prepend(self, data):  # Adds a new node to the beginning
         if self.head is None:
             new_node = Node(data)
             new_node.previous = None
@@ -42,13 +42,18 @@ class DoubleList:
             self.head = new_node
             new_node.previous = None
 
-    def print_list(self):
+    def delete_node(self, data):  # Deletes a node
+        curr = self.head
+        while curr.data != data:
+            curr = curr.next
+        curr.next.previous = curr.prev
+        curr.previous.next = curr.next
+
+    def print_list(self):  # Prints the data in the list
         curr = self.head
         while curr:
             print(curr.data)
             curr = curr.next
 
 
-myList = DoubleList
-myList.prepend(1)
 
